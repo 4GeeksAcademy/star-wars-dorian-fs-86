@@ -39,7 +39,11 @@ export const Home = () => {
 					store.naves.map((naves, index) => {
 						return (
 							<div className="col-md-4" key={index}>
-								<ItemCard name={naves.name} />
+								<ItemCard 
+								name={naves.name}
+								id={naves.uid}
+								inFavorite={HandleFavorite}
+								  />
 							</div>
 						);
 					})
@@ -53,7 +57,11 @@ export const Home = () => {
 					store.planets.map((planets, index) => {
 						return (
 							<div className="col-md-4" key={index}>
-								<ItemCard name={planets.name} />
+								<ItemCard 
+								name={planets.name}
+								id={planets.uid}
+								inFavorite={HandleFavorite}
+								 />
 							</div>
 						);
 					})
