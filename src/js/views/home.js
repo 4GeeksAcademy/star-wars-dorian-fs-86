@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import { ItemCard } from "../component/item-card";
 
@@ -8,77 +8,81 @@ export const Home = () => {
 	useEffect(() => {
 		actions.loadingdata();
 	}, []);
-
-	const HandleFavorite = (id) => {
-		actions.añadirfavoritos(id)
+	const handleFavorite = (item) => {
+		actions.añadirFavoritos(item);
 	};
 	
 	return (
 		<div className="container">
 			<h1 className="text-center">Star Wars Characters</h1>
 			<div className="row">
-				{store.character && store.character.length > 0 ? (
-					store.character.map((character, index) => {
-						return (
-							<div className="col-md-4" key={index}>
-								<ItemCard
-								 name={character.name}
-								 id={character.uid}
-								 inFavorite={HandleFavorite}
-								  />
-							</div>
-						);
-					})
+				{store.character.length > 0 ? (
+					store.character.map((character) => (
+						<div className="col-md-4" key={character.uid}>
+							<ItemCard
+								name={character.name}
+								id={character.uid}
+								type="character"
+								inFavorite={() =>
+									handleFavorite({
+										uid: character.uid,
+										name: character.name,
+										type: "character",
+									})
+								}
+							/>
+						</div>
+					))
 				) : (
 					<p>Loading...</p>
 				)}
 			</div>
 			<h1 className="text-center">Star Wars Naves</h1>
 			<div className="row">
-				{store.naves && store.naves.length > 0 ? (
-					store.naves.map((naves, index) => {
-						return (
-							<div className="col-md-4" key={index}>
-								<ItemCard 
-								name={naves.name}
-								id={naves.uid}
-								inFavorite={HandleFavorite}
-								  />
-							</div>
-						);
-					})
+				{store.naves.length > 0 ? (
+					store.naves.map((nave) => (
+						<div className="col-md-4" key={nave.uid}>
+							<ItemCard
+								name={nave.name}
+								id={nave.uid}
+								type="naves"
+								inFavorite={() =>
+									handleFavorite({
+										uid: nave.uid,
+										name: nave.name,
+										type: "naves",
+									})
+								}
+							/>
+						</div>
+					))
 				) : (
 					<p>Loading...</p>
 				)}
 			</div>
 			<h1 className="text-center">Star Wars Planets</h1>
 			<div className="row">
-				{store.planets && store.planets.length > 0 ? (
-					store.planets.map((planets, index) => {
-						return (
-							<div className="col-md-4" key={index}>
-								<ItemCard 
-								name={planets.name}
-								id={planets.uid}
-								inFavorite={HandleFavorite}
-								 />
-							</div>
-						);
-					})
+				{store.planets.length > 0 ? (
+					store.planets.map((planet) => (
+						<div className="col-md-4" key={planet.uid}>
+							<ItemCard
+								name={planet.name}
+								id={planet.uid}
+								type="planets"
+								inFavorite={() =>
+									handleFavorite({
+										uid: planet.uid,
+										name: planet.name,
+										type: "planets",
+									})
+								}
+							/>
+						</div>
+					))
 				) : (
 					<p>Loading...</p>
 				)}
 			</div>
-
 		</div>
 	);
 };
-
-
-
-
-
-
-
-
-

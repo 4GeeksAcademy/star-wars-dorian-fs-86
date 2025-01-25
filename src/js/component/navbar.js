@@ -1,9 +1,9 @@
-import React, { useContext} from "react";
-import { Context } from "../store/appContext" ;
+import React, { useActionState, useContext } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
@@ -18,15 +18,16 @@ export const Navbar = () => {
 					data-bs-toggle="dropdown"
 					aria-expanded="false"
 				>
-					Favorites ({store.favoritos.length})
+					Favorites({store.favoritos.length})
 				</button>
-				<ul className="dropdown-menu">
+				<ul className="dropdown-favoritos-añadidos">
 					{store.favoritos.length > 0 ? (
 						store.favoritos.map((favoritos, index) => (
 							<li key={index}>
 								<span className="dropdown-item">
-									{favoritos.name}
+									{favoritos.name} - {favoritos.type}
 								</span>
+								<button className="boton-borrar" onClick={() => actions.borrarFavorito(favoritos.uid, favoritos.type)}>X</button>
 							</li>
 						))
 					) : (

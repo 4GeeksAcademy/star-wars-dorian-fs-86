@@ -25,7 +25,7 @@ const Layout = () => {
 						{/* componente como tal lleva muestra las cartas muestra el navbar footer y boton para ir a favoritos */}
 						<Route path="/" element={<Home />} /> 
 						<Route path="/demo" element={<Demo />} />
-						<Route path="/single/:theid" element={<Single />} />
+						<Route path="/single/:type/:id" element={<Single />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />

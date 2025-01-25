@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             character: [],
             naves: [],
             planets: [],
-            favoritos: [],
+            favoritos: JSON.parse(localStorage.getItem("favoritos")) || [],
         },
         actions: {
             loadingdata: async () => {
@@ -14,7 +14,6 @@ const getState = ({ getStore, getActions, setStore }) => {
                         fetch("https://swapi.tech/api/starships/").then((response) => response.json()),
                         fetch("https://swapi.tech/api/planets/").then((response) => response.json()),
                     ]);
-                    
                     setStore({
                         character: responseFetch[0]?.results || [],
                         naves: responseFetch[1]?.results || [],
@@ -24,18 +23,32 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.error("Loading Error", error);
                 }
             },
-            añadirfavoritos: (id) => {
-                const store = getStore()
-                const item = 
-                    store.character.find((personaje) => personaje.uid === id ) || 
-                    store.naves.find((nave) => nave.uid === id ) ||
-                    store.planets.find((planeta) => planeta.uid === id );
-                if(item){
-                    setStore({favoritos: [...store.favoritos, item]});
-                    console.log("favorito añadido", item)
-                };                  
+            añadirFavoritos: (item) => {
+                const store = getStore();
+                const isAlreadyFavorite = store.favoritos.some(
+                    (fav) => fav.uid === item.uid && fav.type === item.type
+                );
+                if (!isAlreadyFavorite) {
+                    const updatedFavorites = [...store.favoritos, item];
+                    setStore({ favoritos: updatedFavorites });
+                    localStorage.setItem("favoritos", JSON.stringify(updatedFavorites));
+                }
+            },
+            borrarFavorito: (uid, type) => {
+                const store = getStore();
+                const actualizarListaFavoritos = store.favoritos.filter((fav) =>
+                    fav.uid !== uid || fav.type !== type
+                );
+                setStore({ favoritos: actualizarListaFavoritos });
+                localStorage.setItem("favoritos", JSON.stringify(actualizarListaFavoritos))
             },
         },
     };
 };
 export default getState;
+
+
+
+
+
+
