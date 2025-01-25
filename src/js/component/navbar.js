@@ -26,8 +26,8 @@ export const Navbar = () => {
 							<li key={index}>
 								<span className="dropdown-item">
 									{favoritos.name} - {favoritos.type}
+									<button className="boton-borrar" onClick={() => actions.borrarFavorito(favoritos.uid, favoritos.type)}>X</button>
 								</span>
-								<button className="boton-borrar" onClick={() => actions.borrarFavorito(favoritos.uid, favoritos.type)}>X</button>
 							</li>
 						))
 					) : (

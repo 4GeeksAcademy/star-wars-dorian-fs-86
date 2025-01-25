@@ -11,10 +11,10 @@ export const Home = () => {
 	const handleFavorite = (item) => {
 		actions.añadirFavoritos(item);
 	};
-	
+
 	return (
 		<div className="container">
-			<h1 className="text-center">Star Wars Characters</h1>
+			<h1 className="characters">Star Wars Characters</h1>
 			<div className="row">
 				{store.character.length > 0 ? (
 					store.character.map((character) => (
@@ -37,7 +37,7 @@ export const Home = () => {
 					<p>Loading...</p>
 				)}
 			</div>
-			<h1 className="text-center">Star Wars Naves</h1>
+			<h1 className="naves">Star Wars Naves</h1>
 			<div className="row">
 				{store.naves.length > 0 ? (
 					store.naves.map((nave) => (
@@ -60,7 +60,7 @@ export const Home = () => {
 					<p>Loading...</p>
 				)}
 			</div>
-			<h1 className="text-center">Star Wars Planets</h1>
+			<h1 className="planets">Star Wars Planets</h1>
 			<div className="row">
 				{store.planets.length > 0 ? (
 					store.planets.map((planet) => (

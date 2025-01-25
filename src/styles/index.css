@@ -1,1 +1,87 @@
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #b5d5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+h1 {
+    font-family: 'Star Jedi', sans-serif;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.characters {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
+    background: burlywood;
+}
+
+.naves {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
+    background: burlywood;
+}
+
+.planets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1%;
+    background: burlywood;
+}
+
+.row {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.dropdown-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: .25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #272129;
+    text-align: justify;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: #6fbc98;
+    border: 0;
+    text-transform: uppercase;
+    margin: 5px;
+    font-family: cursive;
+    border-radius: 5px;
+}
+.boton-borrar{
+    background: rgb(206, 56, 56);
+}
